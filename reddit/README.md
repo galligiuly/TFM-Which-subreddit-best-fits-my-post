@@ -5,6 +5,9 @@ https://redditblog.com/2009/10/15/reddits-new-comment-sorting-system/
 https://it.wikipedia.org/wiki/Reddit
 https://redditblog.com/2019/07/29/the-benefits-of-machine-learning-to-study-small-dataset-of-social-conversations/
 
+Dataset de Reddit
+https://www.reddit.com/r/datasets/comments/3bxlg7/i_have_every_publicly_available_reddit_comment/
+
 PRAW
 https://github.com/praw-dev/praw/
 
