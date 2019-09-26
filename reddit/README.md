@@ -1,3 +1,8 @@
+Project Presentation
+
+https://slides.com/galligiuly/galligiuly/live?context=editing#/
+
+
 Links used:
 
 http://www.storybench.org/how-to-scrape-reddit-with-python/
