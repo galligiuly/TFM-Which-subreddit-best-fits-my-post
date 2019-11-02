@@ -13,7 +13,7 @@ https://slides.com/galligiuly/galligiuly/live?context=editing#/
 
 ## Data
 
-The following (link)[https://bigquery.cloud.google.com/table] refers to a collection of 1.7 billion comments profit uploaded on BigQuery and from where I started to analyze and query the data used for my work.
+The following [link](https://bigquery.cloud.google.com/table) refers to a collection of 1.7 billion comments profit uploaded on BigQuery and from where I started to analyze and query the data used for my work.
 
 Specifically I've used the tables 
  - fh-bigquery:reddit_comments.
@@ -28,7 +28,19 @@ Specifically I've used the tables
 
 
 
+# Tools used
 
+- BigQuery
+- DataStudio
+- Colab
+- Jupyter notebook
+
+
+
+# Programming lenguages used
+
+- Python
+- SQL
 
 
 
@@ -52,6 +64,100 @@ GROUP BY
   4
 ORDER BY
   2 DESC
+```
+
+```sql	
+%%bigquery --project reddit-254019 comments_df
+WITH
+  q1 AS (
+  SELECT
+    DISTINCT(subreddit) uniq_subreddit,
+    COUNT(DISTINCT(author)) AS num_uniq_authors,
+    COUNT(body) AS number_comments,
+    ROUND(AVG(score), 2) AS mean_score,
+    EXTRACT(YEAR
+    FROM
+      TIMESTAMP_SECONDS(created_utc)) year,
+    EXTRACT(month
+    FROM
+      TIMESTAMP_SECONDS(created_utc)) month
+  FROM
+    `fh-bigquery.reddit_comments.2018_*`
+  GROUP BY
+    1,
+    5,
+    6
+  ORDER BY
+    number_comments DESC,
+    mean_score DESC)
+SELECT
+  uniq_subreddit,
+  num_uniq_authors,
+  number_comments,
+  (number_comments - AVG(number_comments) OVER()) / stddev(number_comments) OVER() AS zscore_number_comments,
+  mean_score,
+  (mean_score - AVG(mean_score) OVER()) / stddev(mean_score) OVER() AS zscore_mean_score,
+  year,
+  month
+FROM
+  q1
+ORDER BY
+  zscore_number_comments DESC,
+  zscore_mean_score DESC
+```
+
+
+
+
+
+```sql	
+WITH
+  q1 AS (
+  SELECT
+    DISTINCT(subreddit) uniq_subreddit,
+    COUNT(DISTINCT(author)) AS num_uniq_authors,
+    COUNT(body) AS number_comments,
+    AVG(score) AS avg_score,
+    EXTRACT(YEAR
+    FROM
+      TIMESTAMP_SECONDS(created_utc)) year,
+    EXTRACT(month
+    FROM
+      TIMESTAMP_SECONDS(created_utc)) month
+  FROM
+    `fh-bigquery.reddit_comments.2018_*`
+  GROUP BY
+    1,
+    5,
+    6
+  ORDER BY
+    number_comments DESC,
+    avg_score DESC),
+  q2 AS (
+  SELECT
+    uniq_subreddit,
+    COUNT(uniq_subreddit) AS present_month
+  FROM
+    q1
+  GROUP BY
+    uniq_subreddit )
+SELECT
+  q1.uniq_subreddit,
+  ROUND (avg_score, 2) as avg_score,
+  number_comments,
+  year,
+  present_month
+FROM
+  q1 
+INNER JOIN
+  q2
+ON
+  q1.uniq_subreddit = q2.uniq_subreddit
+WHERE 
+  present_month = 12
+ORDER BY 
+  number_comments DESC
+ 
 ```
 
 
