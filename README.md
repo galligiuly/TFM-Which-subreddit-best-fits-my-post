@@ -13,11 +13,23 @@ https://slides.com/galligiuly/galligiuly/live?context=editing#/
 
 ## Data
 
-The following [link](https://bigquery.cloud.google.com/table) refers to a collection of 1.7 billion comments profit uploaded on BigQuery and from where I started to analyze and query the data used for my work.
+The following [link](<https://console.cloud.google.com/bigquery?p=fh-bigquery%2F&project=reddit-254019&folder&organizationId>) refers to a collection of 1.7 billion comments profit uploaded on BigQuery and from where I started to analyze and query the data used for my work.
 
 Specifically I've used the tables 
  - fh-bigquery:reddit_comments.
  - fh-bigquery:reddit_posts.
+
+#### reddit_comments
+
+The table of comments gives me a huge amount of text that helps me with my purpose. 
+
+Analyzing `number of comments` and `number of unique authors` that write comments give me a filter used to find the most popular subreddits that grow at a specific time during the life of Reddit and remain still active.
+
+#### reddit_posts
+
+Apart from the analysis of comments I decided to make an analysis for posts because the original post (title and corpus of it) should contain more key words that better identify the subreddit, precious information for my study.
+
+The idea is the same as for the comments, filter the parameters most important that give me the most popular subreddits still actives nowadays.
 
 
 ## Project organization
