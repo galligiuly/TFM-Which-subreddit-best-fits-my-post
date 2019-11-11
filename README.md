@@ -64,10 +64,10 @@ SELECT
   COUNT(body) AS number_comments,
   EXTRACT(YEAR
   FROM
-    TIMESTAMP_SECONDS(created_utc)) year,
+  TIMESTAMP_SECONDS(created_utc)) year,
   EXTRACT(month
   FROM
-    TIMESTAMP_SECONDS(created_utc)) month
+  TIMESTAMP_SECONDS(created_utc)) month
 FROM
   `fh-bigquery.reddit_comments.2018_*`
 GROUP BY
@@ -223,7 +223,32 @@ LIMIT 10000000
 
 
 
+## Final list of subreddit for my model
 
+
+
+| Category                | Subreddit     |
+| ----------------------- | ------------- |
+| Sport                   | nba           |
+| Video Games             | Games         |
+| Music                   | Music         |
+| Technology              | technology    |
+| News                    | worldnews     |
+| Politic                 | politics      |
+| Money                   | Frugal        |
+| Discussion              | AskReddit     |
+| Humor                   | funny         |
+| Educational             | todayilearned |
+| Movies                  | movies        |
+| Religion                | atheism       |
+| Cute                    | aww           |
+| Health                  | Fitness       |
+| Geography               | europe        |
+| Entertainment / Hobbies | DIY           |
+| Science                 | science       |
+| Books                   | books         |
+| Food                    | food          |
+| TV                      | television    |
 
 
 
