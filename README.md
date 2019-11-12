@@ -227,6 +227,8 @@ LIMIT 10000000
 
 
 
+First selection
+
 | Category                | Subreddit     |
 | ----------------------- | ------------- |
 | Sport                   | nba           |
@@ -253,7 +255,24 @@ LIMIT 10000000
 
 
 
-  
+  Second selection
+
+| Category    | Subreddit     |
+| ----------- | ------------- |
+| Sport       | nba           |
+| Video Games | gaming        |
+| News        | worldnews     |
+| Politic     | politics      |
+| Humor       | funny         |
+| Discussion  | IAmA          |
+| Educational | todayilearned |
+| Movies      | movies        |
+| Religion    | atheism       |
+| Cute        | aww           |
+| Health      | Fitness       |
+| Geography   | europe        |
+| Science     | science       |
+| Technology  | technology    |
 
 
 
