@@ -31,6 +31,14 @@ Apart from the analysis of comments I decided to make an analysis for posts beca
 
 The idea is the same as for the comments, filter the parameters most important that give me the most popular subreddits still actives nowadays.
 
+#### Objective
+
+What I need is to find the subreddits with a constant popularity during the years.
+
+The most accurate way is to find a function that, once the data has been normalized, is capable to suggest me the subreddit most populars in order of number of comments, number of unique authors that write on it and the score assigned. This is an idea that I'll develop in the future, with more time.
+
+For now, I'll just explore my data, analyzing author, number of comments and score, comparing them and searching a criteria for my selection.
+
 
 ## Project organization
 
