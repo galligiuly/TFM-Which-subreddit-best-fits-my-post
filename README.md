@@ -19,6 +19,11 @@ Specifically I've used the tables
  - fh-bigquery:reddit_comments.
  - fh-bigquery:reddit_posts.
 
+
+
+*  reddit-254019
+* reddit-master
+
 #### reddit_comments
 
 The table of comments gives me a huge amount of text that helps me with my purpose. 
@@ -38,6 +43,17 @@ What I need is to find the subreddits with a constant popularity during the year
 The most accurate way is to find a function that, once the data has been normalized, is capable to suggest me the subreddit most populars in order of number of comments, number of unique authors that write on it and the score assigned. This is an idea that I'll develop in the future, with more time.
 
 For now, I'll just explore my data, analyzing author, number of comments and score, comparing them and searching a criteria for my selection.
+
+
+
+## GCP
+
+The projects on my GCP I've created for this job are:
+
+*  reddit-254019
+* reddit-master
+
+
 
 
 ## Project organization
