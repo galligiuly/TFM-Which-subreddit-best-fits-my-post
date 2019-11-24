@@ -7,9 +7,11 @@ Given a text from a post or a blog, my NLP model would suggest in which subreddi
 _Multy-Class Classification problem_
 
 
+
 ## Project Presentation
 
 https://slides.com/galligiuly/galligiuly/live?context=editing#/
+
 
 
 ## Data
@@ -17,10 +19,13 @@ https://slides.com/galligiuly/galligiuly/live?context=editing#/
 The following [link](<https://console.cloud.google.com/bigquery?p=fh-bigquery%2F&project=reddit-254019&folder&organizationId>) refers to a collection of 1.7 billion comments profit uploaded on BigQuery and from where I started to analyze and query the data used for my work.
 
 Specifically I've used the tables 
+
+_public data_
+
  - fh-bigquery:reddit_comments.
  - fh-bigquery:reddit_posts.
 
-
+_my tables for the project_
 
 *  reddit-254019
 * reddit-master
@@ -29,7 +34,7 @@ Specifically I've used the tables
 
 The table of comments gives me a huge amount of text that helps me with my purpose. 
 
-Analyzing `number of comments` and `number of unique authors` that write comments give me a filter used to find the most popular subreddits that grow at a specific time during the life of Reddit and remain still active.
+Analyzing `number of comments` and `number of unique authors` that write comments, give me a filter used to find the most popular subreddits that grow at a specific time during the life of Reddit and remain still active.
 
 #### reddit_posts
 
@@ -43,7 +48,7 @@ What I need is to find the subreddits with a constant popularity during the year
 
 The most accurate way is to find a function that, once the data has been normalized, is capable to suggest me the subreddit most populars in order of number of comments, number of unique authors that write on it and the score assigned. This is an idea that I'll develop in the future, with more time.
 
-For now, I'll just explore my data, analyzing author, number of comments and score, comparing them and searching a criteria for my selection.
+For now, I'll just explore my data, analyzing number of wrintng authors, number of comments and score, comparing them and searching a criteria for my selection.
 
 
 
@@ -56,12 +61,31 @@ The projects on my GCP I've created for this job are:
 
 
 
+In here I've created Bucket for:
+
+| Bucket name            | Bucket data                                                  |
+| ---------------------- | ------------------------------------------------------------ |
+| reddit_comments_master | All differents results of queries from `fh-bigquery:reddit_comments.` |
+| reddit_posts_master    | All differents results of queries from `fh-bigquery:reddit_posts.` |
+| reddit_final_results   | DataFrames that I have been saving for all the steps to import into the next Colab. |
+| reddit_models          | Last models of my job.                                       |
+
+
+
 
 ## Project organization
 
-- statistics to better understand the data 
-- data ispection
-- data cleaning
+| Folder                                                       | Description                                                  | Key Results (if expected)                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------------------------------------------------- |
+| [00_images](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/tree/master/00_images) | All images used in this project                              | #N/A                                                       |
+| [01_data](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/tree/master/01_data) | csv's results of statistic to better understand the data that, for dimentions, could save in GitHub | Statistic results                                          |
+| [02_inspection](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/tree/master/02_inspection) | Process applied to find the subreddit's target for my job.   | comments_2018-*  posts_2018 .                              |
+| [03_cleaning](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/tree/master/03_cleaning) | Data clieaning and pre-processing                            | comments_posts_2018_V2.csv comments_posts_tokenized_df.pkl |
+| [04_vectiorization_modelling](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/tree/master/04_vectiorization_modelling) | Colab where I've tried differents types of vectorizations and combinations with models (only on one subreddit) | #N/A                                                       |
+| 05_final_modelling                                           | Appling all modes to all my data.                            |                                                            |
+|                                                              |                                                              |                                                            |
+|                                                              |                                                              |                                                            |
+|                                                              |                                                              |                                                            |
 
 
 
@@ -77,210 +101,54 @@ The projects on my GCP I've created for this job are:
 # Programming lenguages used
 
 - Python
-- SQL
+
+`numpy`
+
+`nltk`
+
+`sklearn`
+
+`gensim`
+
+`xgboost`
+
+`matplotlib`
+
+`altair`
+
+`spacy`
 
 
 
-#### Queries draft
+`
 
-```sql	
-SELECT
-  subreddit,
-  COUNT(body) AS number_comments,
-  EXTRACT(YEAR
-  FROM
-  TIMESTAMP_SECONDS(created_utc)) year,
-  EXTRACT(month
-  FROM
-  TIMESTAMP_SECONDS(created_utc)) month
-FROM
-  `fh-bigquery.reddit_comments.2018_*`
-GROUP BY
-  1,
-  3,
-  4
-ORDER BY
-  2 DESC
-```
-
-```sql	
-%%bigquery --project reddit-254019 comments_df
-WITH
-  q1 AS (
-  SELECT
-    DISTINCT(subreddit) uniq_subreddit,
-    COUNT(DISTINCT(author)) AS num_uniq_authors,
-    COUNT(body) AS number_comments,
-    ROUND(AVG(score), 2) AS mean_score,
-    EXTRACT(YEAR
-    FROM
-      TIMESTAMP_SECONDS(created_utc)) year,
-    EXTRACT(month
-    FROM
-      TIMESTAMP_SECONDS(created_utc)) month
-  FROM
-    `fh-bigquery.reddit_comments.2018_*`
-  GROUP BY
-    1,
-    5,
-    6
-  ORDER BY
-    number_comments DESC,
-    mean_score DESC)
-SELECT
-  uniq_subreddit,
-  num_uniq_authors,
-  number_comments,
-  (number_comments - AVG(number_comments) OVER()) / stddev(number_comments) OVER() AS zscore_number_comments,
-  mean_score,
-  (mean_score - AVG(mean_score) OVER()) / stddev(mean_score) OVER() AS zscore_mean_score,
-  year,
-  month
-FROM
-  q1
-ORDER BY
-  zscore_number_comments DESC,
-  zscore_mean_score DESC
-```
+- BigQuery SQL
 
 
 
+# Libraries
 
+`pandas`
 
-```sql	
-WITH
-  q1 AS (
-  SELECT
-    DISTINCT(subreddit) uniq_subreddit,
-    COUNT(DISTINCT(author)) AS num_uniq_authors,
-    COUNT(body) AS number_comments,
-    AVG(score) AS avg_score,
-    EXTRACT(YEAR
-    FROM
-      TIMESTAMP_SECONDS(created_utc)) year,
-    EXTRACT(month
-    FROM
-      TIMESTAMP_SECONDS(created_utc)) month
-  FROM
-    `fh-bigquery.reddit_comments.2018_*`
-  GROUP BY
-    1,
-    5,
-    6
-  ORDER BY
-    number_comments DESC,
-    avg_score DESC),
-  q2 AS (
-  SELECT
-    uniq_subreddit,
-    COUNT(uniq_subreddit) AS present_month
-  FROM
-    q1
-  GROUP BY
-    uniq_subreddit )
-SELECT
-  q1.uniq_subreddit,
-  ROUND (avg_score, 2) as avg_score,
-  number_comments,
-  year,
-  present_month
-FROM
-  q1 
-INNER JOIN
-  q2
-ON
-  q1.uniq_subreddit = q2.uniq_subreddit
-WHERE 
-  present_month = 12
-ORDER BY 
-  number_comments DESC
- 
-```
+`numpy`
+
+`nltk`
+
+`sklearn`
+
+`gensim`
+
+`xgboost`
+
+`matplotlib`
+
+`altair`
+
+`spacy`
 
 
 
-
-
-```sql	
-SELECT
-  score,
-  subreddit,
-  title,
-  selftext
-FROM
-  [fh-bigquery:reddit_posts.2019_03],
-  [fh-bigquery:reddit_posts.2019_04],
-  [fh-bigquery:reddit_posts.2019_05]
-WHERE
-  score > 80
-  AND LENGTH(title) > 5
-  AND selftext != '[deleted]'
-  AND selftext != '[removed]'
-  AND selftext != '[ Removed by reddit in response to a copyright notice. ]'
-  AND selftext != 'NaN'
-  AND selftext != ''
-  AND subreddit != 'de'
-LIMIT
-  10000000
-```
-
-
-
-
-
-```sql
-SELECT score, subreddit, body
-FROM 
-[fh-bigquery:reddit_comments.2019_03],
-[fh-bigquery:reddit_comments.2019_04],
-[fh-bigquery:reddit_comments.2019_05],
-
-where score > 80
-AND length(body) > 10
-AND body != '[deleted]'
-AND body != '[removed]'
-AND body != '[ Removed by reddit in response to a copyright notice. ]'
-AND body != 'NaN'
-AND body != ''
-AND subreddit != 'de'
-LIMIT 10000000
-```
-
-
-
-## Final list of subreddit for my model
-
-
-
-First selection
-
-| Category                | Subreddit     |
-| ----------------------- | ------------- |
-| Sport                   | nba           |
-| Video Games             | Games         |
-| Music                   | Music         |
-| Technology              | technology    |
-| News                    | worldnews     |
-| Politic                 | politics      |
-| Money                   | Frugal        |
-| Discussion              | AskReddit     |
-| Humor                   | funny         |
-| Educational             | todayilearned |
-| Movies                  | movies        |
-| Religion                | atheism       |
-| Cute                    | aww           |
-| Health                  | Fitness       |
-| Geography               | europe        |
-| Entertainment / Hobbies | DIY           |
-| Science                 | science       |
-| Books                   | books         |
-| Food                    | food          |
-| TV                      | television    |
-
-
-
-
-  Second selection
+# Finals subreddits
 
 | Category    | Subreddit     |
 | ----------- | ------------- |
@@ -301,7 +169,24 @@ First selection
 
 
 
+# Steps to exectute the job
 
+<u>Please, execute the notebooks following the numeration assigned to them</u>
+
+The fist part of the exploration data is in BigQuery. 
+
+In my Colabs I've been saving the queries used and the correspondig csv result (in case of queries to get finals DataFrames)
+
+Once the the csv with the selected data has been downloaded
+
+- commments: reddit_comments_master/comments_2018-*
+- posts: reddit_posts_master/posts_2018 .
+
+I've cleaned it and merged in a final global DataFrame named `comments_posts_2018_V2.csv`
+
+From here, I've staterd pre-pocessing the data normalizing and tokenizing it. The result of this process has been `comments_posts_tokenized_df.pkl`
+
+As the dimention of the DataFrame, I've splited it into 14 (one for subreddit) and I've been "testing" vectorizations and models on it.
 
 
 
