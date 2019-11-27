@@ -61,13 +61,13 @@ The projects on my GCP I've created for this job are:
 
 
 
-In here I've created Bucket for:
+In **reddit-master** (where are stored all results that metters) I've created Bucket for:
 
 | Bucket name            | Bucket data                                                  |
 | ---------------------- | ------------------------------------------------------------ |
 | reddit_comments_master | All differents results of queries from `fh-bigquery:reddit_comments.` |
 | reddit_posts_master    | All differents results of queries from `fh-bigquery:reddit_posts.` |
-| reddit_final_results   | DataFrames that I have been saving for all the steps to import into the next Colab. |
+| reddit_final_results   | DataFrames that I have been saving in all the steps to import into the next Colab. |
 | reddit_models          | Last models of my job.                                       |
 
 
@@ -76,16 +76,16 @@ In here I've created Bucket for:
 ## Project organization
 
 | Folder                                                       | Description                                                  | Key Results (if expected)                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------------------------------------------------- |
+| :----------------------------------------------------------- | ------------------------------------------------------------ | ---------------------------------------------------------- |
 | [00_images](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/tree/master/00_images) | All images used in this project                              | #N/A                                                       |
 | [01_data](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/tree/master/01_data) | csv's results of statistic to better understand the data that, for dimentions, could save in GitHub | Statistic results                                          |
 | [02_inspection](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/tree/master/02_inspection) | Process applied to find the subreddit's target for my job.   | comments_2018-*  posts_2018 .                              |
 | [03_cleaning](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/tree/master/03_cleaning) | Data clieaning and pre-processing                            | comments_posts_2018_V2.csv comments_posts_tokenized_df.pkl |
 | [04_vectiorization_modelling](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/tree/master/04_vectiorization_modelling) | Colab where I've tried differents types of vectorizations and combinations with models (only on one subreddit) | #N/A                                                       |
 | 05_final_modelling                                           | Appling all modes to all my data.                            |                                                            |
-|                                                              |                                                              |                                                            |
-|                                                              |                                                              |                                                            |
-|                                                              |                                                              |                                                            |
+| SVC                                                          |                                                              | model_svm.joblib                                           |
+| LR                                                           |                                                              | model_lr.joblib                                            |
+| Random Forest C.                                             |                                                              |                                                            |
 
 
 
@@ -150,22 +150,24 @@ In here I've created Bucket for:
 
 # Finals subreddits
 
-| Category    | Subreddit     |
-| ----------- | ------------- |
-| Sport       | nba           |
-| Video Games | gaming        |
-| News        | worldnews     |
-| Politic     | politics      |
-| Humor       | funny         |
-| Discussion  | IAmA          |
-| Educational | todayilearned |
-| Movies      | movies        |
-| Religion    | atheism       |
-| Cute        | aww           |
-| Health      | Fitness       |
-| Geography   | europe        |
-| Science     | science       |
-| Technology  | technology    |
+
+
+| Category    | subreddit     | subreddit_id |
+| ----------- | ------------- | :----------: |
+| Health      | Fitness       |      0       |
+| Discussion  | IAmA          |      1       |
+| Religion    | atheism       |      2       |
+| Cute        | aww           |      3       |
+| Geography   | europe        |      4       |
+| Humor       | funny         |      5       |
+| Video Games | gaming        |      6       |
+| Movies      | movies        |      7       |
+| Sport       | nba           |      8       |
+| Politic     | politics      |      9       |
+| cience      | science       |      10      |
+| Technology  | technology    |      11      |
+| Educational | todayilearned |      12      |
+| News        | worldnews     |      13      |
 
 
 
