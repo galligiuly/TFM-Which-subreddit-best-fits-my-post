@@ -83,9 +83,34 @@ In **reddit-master** (where are stored all results that metters) I've created Bu
 | [03_cleaning](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/tree/master/03_cleaning) | Data clieaning and pre-processing                            | comments_posts_2018_V2.csv comments_posts_tokenized_df.pkl |
 | [04_vectiorization_modelling](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/tree/master/04_vectiorization_modelling) | Colab where I've tried differents types of vectorizations and combinations with models (only on one subreddit) | #N/A                                                       |
 | 05_final_modelling                                           | Appling all modes to all my data.                            |                                                            |
-| SVC                                                          |                                                              | model_svm.joblib                                           |
-| LR                                                           |                                                              | model_lr.joblib                                            |
-| Random Forest C.                                             |                                                              |                                                            |
+| modelling_LRC_TFIDF                                          | precision: 0.49                                       recall: 0.49                                      f1-score: 0.49 | model_lr.joblib                                            |
+| modelling_SVM_TFIDF                                          | precision: 0.50                                     recall: 0.50                                      f1-score: 0.50 | model_svm.joblib                                           |
+| modelling_RandomForestClassifier_TFIDF                       | precision: 0.49                                       recall: 0.49                                      f1-score: 0.49 |                                                            |
+| modelling_NB_TFIDF.ipynb                                     | *precision: 0.49                                       recall: 0.49                                      f1-score: 0.49* |                                                            |
+|                                                              |                                                              |                                                            |
+
+
+
+# Subreddits selection
+
+
+
+| Category    | subreddit     | subreddit_id |
+| ----------- | ------------- | :----------: |
+| Health      | Fitness       |      0       |
+| Discussion  | IAmA          |      1       |
+| Religion    | atheism       |      2       |
+| Cute        | aww           |      3       |
+| Geography   | europe        |      4       |
+| Humor       | funny         |      5       |
+| Video Games | gaming        |      6       |
+| Movies      | movies        |      7       |
+| Sport       | nba           |      8       |
+| Politic     | politics      |      9       |
+| cience      | science       |      10      |
+| Technology  | technology    |      11      |
+| Educational | todayilearned |      12      |
+| News        | worldnews     |      13      |
 
 
 
@@ -148,29 +173,6 @@ In **reddit-master** (where are stored all results that metters) I've created Bu
 
 
 
-# Finals subreddits
-
-
-
-| Category    | subreddit     | subreddit_id |
-| ----------- | ------------- | :----------: |
-| Health      | Fitness       |      0       |
-| Discussion  | IAmA          |      1       |
-| Religion    | atheism       |      2       |
-| Cute        | aww           |      3       |
-| Geography   | europe        |      4       |
-| Humor       | funny         |      5       |
-| Video Games | gaming        |      6       |
-| Movies      | movies        |      7       |
-| Sport       | nba           |      8       |
-| Politic     | politics      |      9       |
-| cience      | science       |      10      |
-| Technology  | technology    |      11      |
-| Educational | todayilearned |      12      |
-| News        | worldnews     |      13      |
-
-
-
 # Steps to exectute the job
 
 <u>Please, execute the notebooks following the numeration assigned to them</u>
@@ -191,4 +193,46 @@ From here, I've staterd pre-pocessing the data normalizing and tokenizing it. Th
 As the dimention of the DataFrame, I've splited it into 14 (one for subreddit) and I've been "testing" vectorizations and models on it.
 
 
+
+# Contingency Plan
+
+A DataFrame of 10865638 lineas involves a huge job not only in terms of training, managing an setting times but also of computer capabilities.
+
+That's why I preferred to not lose the opportunity to conclude my analysis but to redimension the DataFrame in order to be able to pass through all ML processes with my data.
+
+Colabs and Jupters with 08 numeratin are realte to the contingency plan rapresented with all the prevous categories (subreddits) but with a reduced number of rows: 2164569.
+
+
+
+| Jupyter name              | Description/score                                            | File output                                             |
+| ------------------------- | ------------------------------------------------------------ | ------------------------------------------------------- |
+| 06_08.01_contingency_plan | Downloead, cleaning, tokenization, vectorization and saving of the new DataFrame | red_comments_posts.csv red_comments_posts_tokenized.pkl |
+| 08.02_modelling_LRC       | precision: 0.54                                       recall: 0.54                                          f1-score: 0.54 | red_model_lrc.pkl                                       |
+| 08.03_modelling_SVM       |                                                              |                                                         |
+| 08.04_modelling_RFC       |                                                              |                                                         |
+| 08.05_modelling_LSTM      |                                                              |                                                         |
+|                           |                                                              |                                                         |
+
+
+
+#### Last change to improve my model
+
+After trainig differents models, seatching the best paramas for each, I can see that the most complicated subreddits to train with a sufficient success are:
+
+
+
+| Category    | subreddit     | subreddit_id | difficulty                                                   |
+| ----------- | ------------- | :----------: | ------------------------------------------------------------ |
+| Discussion  | IAmA          |      1       | Ask Me Anything - every discussion can be planted here so it's like a global subreddit where you can find discussions about every category I've choosen |
+| Humor       | funny         |      5       | The mayor data here are pictures and videos with a few comments and almost without "keywords" for my model |
+| Educational | todayilearned |      12      | Same as IAmA                                                 |
+| News        | worldnews     |      13      | Can find be considered a summary of all the other subreddits I've chosen |
+
+As my best model is LSTM I'll train it without these 4 categories and see if the final results:
+
+
+
+| Jupyter name | Description/score | File output |
+| ------------ | ----------------- | ----------- |
+|              |                   |             |
 
