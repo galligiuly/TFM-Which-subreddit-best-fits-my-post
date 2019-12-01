@@ -194,6 +194,10 @@ If you just want to test the project, you can execute [the testing notebook](htt
 
 <u>Please, execute the notebooks following the numeration assigned to them</u>
 
+You will need keras version 2.3.1 to execute the final model.
+
+
+
 The fist part of the exploration data is in BigQuery.
 
 In my Colabs I've been saving the queries used and the correspondig csv result (in case of queries to get finals DataFrames)
@@ -314,7 +318,9 @@ As my best model is LSTM I'll train it <u>without these 4 complicated categories
 
 The only think you have to do is clone this report and execute the Jupyter [`project_testing.ipynb` ](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/blob/master/06_contingency_plan/project_testing.ipynb)
 
-You will need keras version 2.3.1 to execute the final model.
+
+
+
 
 
 
