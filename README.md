@@ -233,7 +233,7 @@ Colabs and Jupters with 08 numeration are related to the contingency plan where 
 | [06_*08.02_modelling_LRC*](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/blob/master/06_contingency_plan/06_08.02_modelling_LRC.ipynb) | Accuracy: 0.540 | red_model_lrc.pkl                     |
 | [06_*08.03_modelling_SVM*](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/blob/master/06_contingency_plan/06_08.03_modelling_SVM.ipynb) | Accuracy: 0.542 | red_model_svm.pkl                     |
 | [06_*08.04_modelling_RFC*](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/blob/master/06_contingency_plan/06_08.04_modelling_RFC.ipynb) | Accuracy: 0.445 | red_model_rfc.pkl                     |
-| [06_*08.05_modelling_LSTM*](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/blob/master/06_contingency_plan/06_08.06_LSTM-keras.ipynb) | Accuracy: 0.544 | red_model_lstm_30_batchsize_512_v2.h5 |
+| [06_*08.05_modelling_LSTM*](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/blob/master/06_contingency_plan/06_08.05_LSTM-keras.ipynb) | Accuracy: 0.544 | red_model_lstm_30_batchsize_512_v2.h5 |
 | [06_*08.06_modelling_simpletransforer*](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/blob/master/06_contingency_plan/06_08.06_modelling_simpletransformer_BERT.ipynb) | Colab collapsed | *#N/A*                                |
 
 
