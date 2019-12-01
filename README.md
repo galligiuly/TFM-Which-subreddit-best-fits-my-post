@@ -304,3 +304,15 @@ LSTM model has completely win against all the other models.
 
 All my models had a better result compared with the Accuracy on [Baseline](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/blob/master/05_final_modelling/Baseline_Classifier.ipynb): 0.07136973635425176
 
+
+
+
+
+
+
+# References
+
+[Kschool](https://kschool.com/)
+
+[My Linkedin](https://www.linkedin.com/in/giulia-galli-7669ba85/?locale=en_US)
+
