@@ -78,13 +78,13 @@ In **reddit-master** (where are stored all results that metters) I've created Bu
 | :----------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [00_images](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/tree/master/00_images) | All images used in this project                              | *#N/A*                                                       |
 | [01_data](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/tree/master/01_data) | csv's results of statistic to better understand the data that, for dimentions, couldn't save in GitHub | Statistic results                                            |
-| [02_inspection](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/tree/master/02_inspection) | Process applied to find the subreddit's target for my job.   | comments_top100.csv                                         authors_top100.csv                               titles_top100.csv                authors_in_posts_top100.csv               comments_2018-*                                             posts_2018 . |
-| [03_cleaning](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/tree/master/03_cleaning) | Data clieaning and pre-processing                            | comments_posts_2018_V2.csv comments_posts_tokenized_df.pkl             "comments_posts_" + {subreddit} + ".pkl" |
+| [02_inspection](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/tree/master/02_inspection) | Process applied to find the subreddit's target for my job.   | comments_top100.csv,                                         authors_top100.csv,                               titles_top100.csv,                authors_in_posts_top100.csv,              comments_2018-*,                                         posts_2018 . |
+| [03_cleaning](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/tree/master/03_cleaning) | Data clieaning and pre-processing                            | comments_posts_2018_V2.csv, comments_posts_tokenized_df.pkl,           "comments_posts_" + {subreddit} + ".pkl" |
 | [04_vectiorization_modelling](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/tree/master/04_vectiorization_modelling) | Colab where I've tried differents types of vectorizations and combinations with models (only on one subreddit) | *#N/A*                                                       |
-| [05_final_modelling](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/tree/master/05_final_modelling) | Complete DataFrame with 10865638 lineas of comments and posts | model_lr.joblib                                       model_svm.joblib                                     model_rfc_joblib |
-| [06_contingency_plan](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/tree/master/06_contingency_plan) | Reduced amount of data in the DataFrame (<u>mode detail below</u>) | reduced_comments_2018-000000000000 reduced_posts_2018               red_comments_posts.csv red_comments_posts_tokenized.pkl    red_model_lrc.pkl                                 red_model_svm.pkl                               red_model_rfc.pkl                   red_model_lstm_30_batchsize_512_v2.h5 red_model_lstm_30_batchsize_150_10_subreddits.h5 |
+| [05_final_modelling](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/tree/master/05_final_modelling) | Complete DataFrame with 10865638 lineas of comments and posts | model_lr.joblib,                                      model_svm.joblib,                                     model_rfc_joblib, |
+| [06_contingency_plan](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/tree/master/06_contingency_plan) | Reduced amount of data in the DataFrame (<u>mode detail below</u>) | reduced_comments_2018-000000000000, reduced_posts_2018,               red_comments_posts.csv,  red_comments_posts_tokenized.pkl,     red_model_lrc.pkl,                                  red_model_svm.pkl,                               red_model_rfc.pkl,                    red_model_lstm_30_batchsize_512_v2.h5,  red_model_lstm_30_batchsize_150_10_subreddits.h5 |
 
-
+ 
 
 ## Model results - 1st part
 
@@ -136,8 +136,6 @@ In **reddit-master** (where are stored all results that metters) I've created Bu
 
 - Python
 
-`
-
 - BigQuery SQL
 
 
@@ -155,8 +153,6 @@ In **reddit-master** (where are stored all results that metters) I've created Bu
 `sklearn`
 
 `gensim`
-
-`xgboost`
 
 `matplotlib`
 
@@ -218,23 +214,29 @@ Colabs and Jupters with 08 numeration are related to the contingency plan where 
 
 
 
+
+
 #### Project organization
 
-| Folder                      | Description                                                  | Key Results (if expected)                               |
-| --------------------------- | ------------------------------------------------------------ | ------------------------------------------------------- |
-| 06_*08.01_contingency_plan* | Downloead, cleaning, tokenization, vectorization and saving of the new DataFrame | red_comments_posts.csv red_comments_posts_tokenized.pkl |
+| Folder                                                       | Description                                                  | Key Results (if expected)                               |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------- |
+| [06_*08.01_contingency_plan*](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/blob/master/06_contingency_plan/06_08.01_contingency_plan.ipynb) | Downloead, cleaning, tokenization, vectorization and saving of the new DataFrame | red_comments_posts.csv red_comments_posts_tokenized.pkl |
+
+
 
 
 
 #### Models results - 2nd part
 
-| Jupyter name                        | Score           | File output                           |
-| ----------------------------------- | --------------- | ------------------------------------- |
-| 06_08.02_modelling_LRC              | Accuracy: 0.540 | red_model_lrc.pkl                     |
-| 06_08.03_modelling_SVM              | Accuracy: 0.542 | red_model_svm.pkl                     |
-| 08.04_modelling_RFC                 | Accuracy: 0.445 | red_model_rfc.pkl                     |
-| 06_08.05_modelling_LSTM             | Accuracy: 0.544 | red_model_lstm_30_batchsize_512_v2.h5 |
-| 06_08.06_modelling_simpletransforer | Colab collapsed | *#N/A*                                |
+| Jupyter name                                                 | Score           | File output                           |
+| ------------------------------------------------------------ | --------------- | ------------------------------------- |
+| [06_*08.02_modelling_LRC*](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/blob/master/06_contingency_plan/06_08.02_modelling_LRC.ipynb) | Accuracy: 0.540 | red_model_lrc.pkl                     |
+| [06_*08.03_modelling_SVM*](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/blob/master/06_contingency_plan/06_08.03_modelling_SVM.ipynb) | Accuracy: 0.542 | red_model_svm.pkl                     |
+| [06_*08.04_modelling_RFC*](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/blob/master/06_contingency_plan/06_08.04_modelling_RFC.ipynb) | Accuracy: 0.445 | red_model_rfc.pkl                     |
+| [06_*08.05_modelling_LSTM*](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/blob/master/06_contingency_plan/06_08.06_LSTM-keras.ipynb) | Accuracy: 0.544 | red_model_lstm_30_batchsize_512_v2.h5 |
+| [06_*08.06_modelling_simpletransforer*](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/blob/master/06_contingency_plan/06_08.06_modelling_simpletransformer_BERT.ipynb) | Colab collapsed | *#N/A*                                |
+
+
 
 
 
@@ -255,11 +257,15 @@ As my best model is LSTM I'll train it <u>without these 4 complicated categories
 
 
 
+
+
 #### Models results - 3rd part
 
-| Jupyter name             | Description/score | File output                                      |
-| ------------------------ | ----------------- | ------------------------------------------------ |
-| 06_*09_LSTM-keras_final* | Accuracy: 0.697   | red_model_lstm_30_batchsize_150_10_subreddits.h5 |
+| Jupyter name                                                 | Description/score | File output                                      |
+| ------------------------------------------------------------ | ----------------- | ------------------------------------------------ |
+| [06_*09_LSTM-keras_final*](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/blob/master/06_contingency_plan/06_09_LSTM-keras_final.ipynb) | Accuracy: 0.697   | red_model_lstm_30_batchsize_150_10_subreddits.h5 |
+
+
 
 
 
