@@ -314,12 +314,6 @@ As my best model is LSTM I'll train it <u>without these 4 complicated categories
 
 
 
-# Test my project
-
-The only think you have to do is clone this report and execute the Jupyter [`project_testing.ipynb` ](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/blob/master/06_contingency_plan/project_testing.ipynb)
-
-
-
 
 
 
