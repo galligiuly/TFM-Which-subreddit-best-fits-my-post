@@ -268,10 +268,10 @@ After trainig differents models, seatching the best paramas on each, I can see t
 
 | Category    | subreddit     | subreddit_id | difficulty                                                   |
 | ----------- | ------------- | :----------: | ------------------------------------------------------------ |
-| Discussion  | IAmA          |      1       | Ask Me Anything - every discussion can be planted here so it's like a global subreddit where you can find discussions about every category I've choosen |
+| Discussion  | IAmA          |      1       | Ask Me Anything - every discussion can be planted here so it's like a global subreddit where you can find discussions about each category that I have chosen (difficult implementation for an NLP model) |
 | Humor       | funny         |      5       | The mayor data here are pictures and videos with a few comments and almost without "keywords" for my model |
-| Educational | todayilearned |      12      | Same as IAmA                                                 |
-| News        | worldnews     |      13      | Can find be considered a summary of all the other subreddits I've chosen |
+| Educational | todayilearned |      12      | Same problem as IAmA                                         |
+| News        | worldnews     |      13      | Can be considered a summary of all the other subreddits I've chosen - it's difficult to find a pattern for an NLP model. |
 
 
 
