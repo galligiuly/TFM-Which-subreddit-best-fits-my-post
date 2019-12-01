@@ -172,7 +172,11 @@ In **reddit-master** (where are stored all results that metters) I've created Bu
 
 <u>Please, execute the notebooks following the numeration assigned to them</u>
 
-The fist part of the exploration data is in BigQuery. 
+Make shure you have installed `gcloud` (here the [link](https://cloud.google.com/sdk/docs/quickstart-macos) to do it) and that you can use it Jupyter notebook.
+
+
+
+The fist part of the exploration data is in BigQuery.
 
 In my Colabs I've been saving the queries used and the correspondig csv result (in case of queries to get finals DataFrames)
 
