@@ -88,11 +88,11 @@ In **reddit-master** (where are stored all results that metters) I've created Bu
 
 ## Model results - 1st part
 
-| Jupyter                                | Score                                                        | File output      |
-| -------------------------------------- | ------------------------------------------------------------ | ---------------- |
-| modelling_LRC_TFIDF                    | precision: 0.49                                                   recall: 0.49                                                              f1-score: 0.49 | model_lr.joblib  |
-| modelling_SVM_TFIDF                    | precision: 0.50                                     recall: 0.50                                                  f1-score: 0.50 | model_svm.joblib |
-| modelling_RandomForestClassifier_TFIDF | precision: 0.44                                       recall: 0.39                                             f1-score: 0.38 | model_rfc_joblib |
+| Jupyter                                                      | Score                                                        | File output      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------- |
+| [modelling_LRC_TFIDF](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/blob/master/05_final_modelling/05_07.01_modelling_LRC_TFIDF.ipynb) | precision: 0.49                                                   recall: 0.49                                                              f1-score: 0.49 | model_lr.joblib  |
+| [modelling_SVM_TFIDF](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/blob/master/05_final_modelling/05_07.02_modelling_SVM_TFIDF.ipynb) | precision: 0.50                                     recall: 0.50                                                  f1-score: 0.50 | model_svm.joblib |
+| [modelling_RandomForestClassifier_TFIDF](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/blob/master/05_final_modelling/05_07.03_modellin_RFC-TFIDF.ipynb) | precision: 0.44                                       recall: 0.39                                             f1-score: 0.38 | model_rfc_joblib |
 
 
 
@@ -302,5 +302,5 @@ You will need keras version 2.3.1 to execute the final model.
 
 LSTM model has completely win against all the other models.
 
-All my models had a better result compared with the Accuracy on Baseline: 0.07136973635425176
+All my models had a better result compared with the Accuracy on [Baseline](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/blob/master/05_final_modelling/Baseline_Classifier.ipynb): 0.07136973635425176
 
