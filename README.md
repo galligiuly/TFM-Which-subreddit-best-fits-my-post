@@ -170,11 +170,29 @@ In **reddit-master** (where are stored all results that metters) I've created Bu
 
 # Steps to exectute the job
 
+### gcloud 
+
+Make shure you have `gcloud` SDK installed (here the [link](https://cloud.google.com/sdk/docs/quickstart-macos) to do it) and that you can use it Jupyter notebook.
+
+Once it's installed, you need to add the `gcloud` executable to the `$PATH` environment variable.  Default installation process does this automatically, but if you haven't followed it, you can edit your `.bashrc` or `.zshrc` file and add it as follows:
+
+```bash
+export PATH=/Users/<youruser>/<gcloud-downloaded-folder>/bin:$PATH
+```
+
+After adding it to your path, you will need to run `jupyter notebook` from a shell that has the new path already, the easiest way is to restart the terminal.
+
+
+
+### Testing the project
+
+If you just want to test the project, you can execute [the testing notebook](https://github.com/galligiuly/TFM-Which-subreddit-best-fits-my-post/blob/master/06_contingency_plan/project_testing.ipynb) which is already prepared to run with the best performing model.
+
+
+
+### Project Walkthrough
+
 <u>Please, execute the notebooks following the numeration assigned to them</u>
-
-Make shure you have installed `gcloud` (here the [link](https://cloud.google.com/sdk/docs/quickstart-macos) to do it) and that you can use it Jupyter notebook.
-
-
 
 The fist part of the exploration data is in BigQuery.
 
