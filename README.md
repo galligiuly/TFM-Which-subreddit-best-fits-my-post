@@ -14,6 +14,12 @@ https://slides.com/galligiuly/galligiuly/live?context=editing#/
 
 
 
+## Project Results
+
+https://slides.com/galligiuly/deck/live?context=editing#/
+
+
+
 ## Data
 
 The following [link](<https://console.cloud.google.com/bigquery?p=fh-bigquery%2F&project=reddit-254019&folder&organizationId>) refers to a collection of 1.7 billion comments uploaded to BigQuery and from where I started to analyze and query the data used for my work.
