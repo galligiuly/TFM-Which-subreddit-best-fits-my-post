@@ -4,7 +4,7 @@ Kschool - Master Data Science
 The purpose of my project is to train an NLP model that could be able to suggest the fittest subreddit for bloggers who want publish in Reddit.
 Given a text from a post or a blog, my NLP model would suggest in which subreddit it could be published
 
-_Multy-Class Classification problem_
+_Multiclass Classification problem_
 
 
 
